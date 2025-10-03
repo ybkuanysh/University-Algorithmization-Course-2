@@ -1,0 +1,97 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "4.0.2"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						2
+					]
+				},
+				{
+					"build" : "2025/9/week-1",
+					"jsonFile" : "directory-2025.9.week-1-Debug-b792d4bcd36b0f562a5c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "4.0.2"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "2025/9/week-1",
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "Course-2",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "2025-10-3-hw::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-2025-10-3-hw-Debug-1c263f9f257c570b49fd.json",
+					"name" : "2025-10-3-hw",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "task1::@974c2a02bf9a9060ade5",
+					"jsonFile" : "target-task1-Debug-43db7b55039615e7f4b0.json",
+					"name" : "task1",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "week-1-hw::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-week-1-hw-Debug-24d420d8bdc011d0544a.json",
+					"name" : "week-1-hw",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/ybkuanysh/Projects/University/University-Algoritmization-Course-2/cmake-build-debug",
+		"source" : "/home/ybkuanysh/Projects/University/University-Algoritmization-Course-2"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 8
+	}
+}

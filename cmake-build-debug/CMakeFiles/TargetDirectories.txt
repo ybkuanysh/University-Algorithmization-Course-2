@@ -1,0 +1,7 @@
+/home/ybkuanysh/Projects/University/University-Algoritmization-Course-2/cmake-build-debug/CMakeFiles/week-1-hw.dir
+/home/ybkuanysh/Projects/University/University-Algoritmization-Course-2/cmake-build-debug/CMakeFiles/2025-10-3-hw.dir
+/home/ybkuanysh/Projects/University/University-Algoritmization-Course-2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/ybkuanysh/Projects/University/University-Algoritmization-Course-2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/ybkuanysh/Projects/University/University-Algoritmization-Course-2/cmake-build-debug/2025/9/week-1/CMakeFiles/task1.dir
+/home/ybkuanysh/Projects/University/University-Algoritmization-Course-2/cmake-build-debug/2025/9/week-1/CMakeFiles/edit_cache.dir
+/home/ybkuanysh/Projects/University/University-Algoritmization-Course-2/cmake-build-debug/2025/9/week-1/CMakeFiles/rebuild_cache.dir
