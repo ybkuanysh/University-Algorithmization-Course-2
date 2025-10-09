@@ -13,3 +13,11 @@ add_executable(week-1-hw 2025/9/week-1/task1.cpp)
 
 # Неделя 5
 add_executable(2025-10-3-hw 2025/10/3/hw.cpp)
+
+
+add_executable(sro1 sro/sro.cpp)
+
+# Неделя 6
+add_subdirectory(2025/10/10)
+add_executable(2025-10-10-hw 2025/10/10/hw.cpp)
+target_link_libraries(2025-10-10-hw PRIVATE Glazunova_5_2_basic_lib Glazunova_5_2_middle_lib)
