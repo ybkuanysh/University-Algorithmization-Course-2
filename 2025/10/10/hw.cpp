@@ -80,7 +80,6 @@ void glazunova_5_2_middle() {
     cout << "------------------------------------------------------------------\n";
 }
 
-
 void waitForContinue() {
     cin.ignore();
     cout << "Для продолжения нажмите Enter." << endl;
