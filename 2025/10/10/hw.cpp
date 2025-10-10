@@ -15,50 +15,41 @@ using namespace std;
  * должна менять максимальный и минимальный элемент матрицы.
  */
 void glazunova_5_2_basic() {
-    // 1. Создание динамического массива n*m
-    int** matrix = new int*[basic_N];
-    for (int i = 0; i < basic_N; ++i) {
-        matrix[i] = new int[basic_M];
-    }
+    const int N_ROWS = 6;
+    const int M_COLS = 5;
+
+    Matrix matrix(N_ROWS, vector<int>(M_COLS));
 
     int choice;
-    std::cout << "Как заполнить матрицу?\n";
-    std::cout << "1. Ввести вручную\n";
-    std::cout << "2. Сгенерировать случайными числами (от 0 до 100)\n";
-    std::cout << "Ваш выбор: ";
-    std::cin >> choice;
+    cout << "Как заполнить матрицу " << N_ROWS << "x" << M_COLS << "?\n";
+    cout << "1. Ввести вручную\n";
+    cout << "2. Сгенерировать случайными числами (от 0 до 100)\n";
+    cout << "Ваш выбор: ";
+    cin >> choice;
 
     system("clear");
 
     if (choice == 1) {
-        // Ввод данных с клавиатуры
-        std::cout << "Введите элементы матрицы " << basic_N << "x" << basic_M << " (целые числа):\n";
-        for (int i = 0; i < basic_N; ++i) {
-            for (int j = 0; j < basic_M; ++j) {
-                std::cout << "Элемент [" << i << "][" << j << "]: ";
-                std::cin >> matrix[i][j];
+        cout << "Введите элементы матрицы " << N_ROWS << "x" << M_COLS << " (целые числа):\n";
+        for (int i = 0; i < N_ROWS; ++i) {
+            for (int j = 0; j < M_COLS; ++j) {
+                cout << "Элемент [" << i << "][" << j << "]: ";
+                cin >> matrix[i][j];
             }
         }
     } else {
-        // Заполнение случайными числами
-        fill_matrix_randomly(matrix, basic_N, basic_M, 0, 100);
-        std::cout << "Матрица успешно заполнена случайными числами.\n";
+        fill_matrix_randomly_vector(matrix, 0, 100);
+        cout << "Матрица успешно заполнена случайными числами.\n";
     }
 
-    std::cout << "\n--- Исходная матрица ---\n";
-    print_matrix(matrix, basic_N, basic_M);
+    cout << "\n--- Исходная матрица ---\n";
+    print_matrix_vector(matrix);
 
-    // 3. Вызов библиотечной функции
-    swap_min_max_elements(matrix, basic_N, basic_M);
+    // 3. Вызов библиотечной функции, использующей векторы
+    swap_min_max_elements_vector(matrix);
 
-    std::cout << "\n--- Матрица после обмена min и max ---\n";
-    print_matrix(matrix, basic_N, basic_M);
-
-    // 4. Очистка динамической памяти
-    for (int i = 0; i < basic_N; ++i) {
-        delete[] matrix[i];
-    }
-    delete[] matrix;
+    cout << "\n--- Матрица после обмена min и max ---\n";
+    print_matrix_vector(matrix);
 }
 
 /**
@@ -67,31 +58,26 @@ void glazunova_5_2_basic() {
  * Вариант 14: массив N*M 6*6.
  */
 void glazunova_5_2_middle() {
-    // Инициализация матрицы и вектора
-    std::vector<std::vector<double>> A(middle_N, std::vector<double>(middle_M));
-    std::vector<double> B(middle_N);
+    DMatrix A(middle_N, vector<double>(middle_M));
+    vector<double> B(middle_N);
 
-    std::cout << "--- Выполнение задания 5.2 (Средний уровень, Вариант 14) ---\n";
+    cout << "--- Выполнение задания 5.2 (Средний уровень, Вариант 14) ---\n";
 
-    // 1. Создание матрицы A
     create_matrix_A(A);
     print_matrix(A);
 
-    // 2. Создание вектора B
     create_vector_B(A, B);
     print_vector(B, "B");
 
-    // 3. Вычисление функции G
     double G = calculate_G(B);
 
-    // 4. Вывод результата G
-    if (!std::isnan(G)) {
-        std::cout << "\nРезультат вычисления функции G:\n";
-        std::cout << "G = " << std::fixed << std::setprecision(6) << G << "\n";
+    if (!isnan(G)) {
+        cout << "\nРезультат вычисления функции G:\n";
+        cout << "G = " << fixed << setprecision(6) << G << "\n";
     } else {
-        std::cout << "\nВычисление G завершено с ошибкой (NaN).\n";
+        cout << "\nВычисление G завершено с ошибкой (NaN).\n";
     }
-    std::cout << "------------------------------------------------------------------\n";
+    cout << "------------------------------------------------------------------\n";
 }
 
 

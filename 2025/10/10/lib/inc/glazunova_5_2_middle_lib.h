@@ -17,18 +17,21 @@
 const int middle_N = 6;
 const int middle_M = 6;
 // Константа e
-const double E = std::exp(1.0);
+const double E = exp(1.0);
+
+using namespace std;
+using DMatrix = vector<vector<double>>;
 
 double cot(double x);
 
-void print_matrix(const std::vector<std::vector<double>>& A);
+void print_matrix(const DMatrix& A);
 
-void print_vector(const std::vector<double>& B, const std::string& name);
+void print_vector(const vector<double>& B, const string& name);
 
-void create_matrix_A(std::vector<std::vector<double>>& A);
+void create_matrix_A(DMatrix& A);
 
-void create_vector_B(const std::vector<std::vector<double>>& A, std::vector<double>& B);
+void create_vector_B(const DMatrix& A, vector<double>& B);
 
-double calculate_G(const std::vector<double>& B);
+double calculate_G(const vector<double>& B);
 
 #endif //COURSE_2_GLAZUNOVA_5_2_MIDDLE_LIB_H

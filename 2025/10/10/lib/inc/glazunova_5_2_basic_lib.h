@@ -5,33 +5,28 @@
 #ifndef COURSE_2_GLAZUNOVA_5_2_BASIC_LIB_H
 #define COURSE_2_GLAZUNOVA_5_2_BASIC_LIB_H
 
-#include <iostream>
-#include <algorithm> // Для std::swap, хоть это и не строго обязательно
+#include <vector>
 
-const int basic_N = 6; // строки
-const int basic_M = 5; // столбцы
+using Matrix = std::vector<std::vector<int>>;
 
 /**
- * @brief Меняет местами минимальный и максимальный элементы в заданной матрице.
- * * @param matrix Двумерный массив целых чисел.
- * @param rows Количество строк (n).
- * @param cols Количество столбцов (m).
+ * @brief Меняет местами минимальный и максимальный элементы в матрице.
+ * * @param matrix Матрица для обработки. Передается по ссылке для изменения.
  */
-void swap_min_max_elements(int** matrix, int rows, int cols);
+void swap_min_max_elements_vector(Matrix& matrix);
 
 /**
- * @brief Вспомогательная функция для вывода матрицы (опционально, для отладки).
+ * @brief Выводит матрицу в консоль.
+ * * @param matrix Матрица для вывода.
  */
-void print_matrix(int** matrix, int rows, int cols);
+void print_matrix_vector(const Matrix& matrix);
 
 /**
- * @brief Заполняет матрицу случайными целыми числами в заданном диапазоне.
- * * @param matrix Двумерный массив целых чисел.
- * @param rows Количество строк (n).
- * @param cols Количество столбцов (m).
- * @param min_val Минимально возможное значение (включительно).
- * @param max_val Максимально возможное значение (включительно).
+ * @brief Заполняет матрицу случайными числами в заданном диапазоне.
+ * * @param matrix Матрица для заполнения. Передается по ссылке для изменения.
+ * @param min_val Минимальное случайное значение (включительно).
+ * @param max_val Максимальное случайное значение (включительно).
  */
-void fill_matrix_randomly(int** matrix, int rows, int cols, int min_val, int max_val);
+void fill_matrix_randomly_vector(Matrix& matrix, int min_val, int max_val);
 
 #endif //COURSE_2_GLAZUNOVA_5_2_BASIC_LIB_H

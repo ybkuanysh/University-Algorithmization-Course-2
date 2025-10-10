@@ -3,89 +3,99 @@
 //
 
 #include "../inc/glazunova_5_2_basic_lib.h"
-#include <limits> // Для std::numeric_limits
-#include <random>    // Для генератора случайных чисел
-#include <chrono>    // Для инициализации генератора
 
-void swap_min_max_elements(int** matrix, int rows, int cols) {
-    if (rows <= 0 || cols <= 0) {
-        // Защита от некорректных размеров
+#include <limits>
+#include <random>
+#include <chrono>
+#include <utility>
+#include <algorithm>
+#include <iostream>
+
+/**
+ * @brief Меняет местами минимальный и максимальный элементы в матрице.
+ * * Использует std::vector<std::vector<int>> для представления матрицы.
+ *
+ * @param matrix Матрица для обработки. Передается по ссылке для изменения.
+ */
+void swap_min_max_elements_vector(Matrix& matrix) {
+    if (matrix.empty() || matrix[0].empty()) {
         return;
     }
 
-    // Инициализация координат и значений
     int min_val = std::numeric_limits<int>::max();
     int max_val = std::numeric_limits<int>::min();
 
-    // Координаты минимального элемента
-    int min_row = 0;
-    int min_col = 0;
-
-    // Координаты максимального элемента
-    int max_row = 0;
-    int max_col = 0;
+    std::pair<int, int> min_coords = {0, 0};
+    std::pair<int, int> max_coords = {0, 0};
 
     // Шаг 1: Поиск минимального и максимального элементов и их координат
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
+    for (int i = 0; i < matrix.size(); ++i) {
+        for (int j = 0; j < matrix[i].size(); ++j) {
             int current_val = matrix[i][j];
 
             // Ищем минимальный элемент (если несколько - берем первый)
             if (current_val < min_val) {
                 min_val = current_val;
-                min_row = i;
-                min_col = j;
+                min_coords = {i, j};
             }
 
             // Ищем максимальный элемент (если несколько - берем первый)
             if (current_val > max_val) {
                 max_val = current_val;
-                max_row = i;
-                max_col = j;
+                max_coords = {i, j};
             }
         }
     }
 
-    // Шаг 2: Обмен значениями (если они не совпадают)
-    // Достаточно поменять значения в найденных ячейках.
-    if (min_row != max_row || min_col != max_col) {
-        // Используем стандартную функцию обмена
-        std::swap(matrix[min_row][min_col], matrix[max_row][max_col]);
+    // Шаг 2: Обмен значениями (если координаты min и max не совпадают)
+    if (min_coords != max_coords) {
+        // Обмен значениями в найденных ячейках
+        std::swap(matrix[min_coords.first][min_coords.second],
+                  matrix[max_coords.first][max_coords.second]);
     }
-    // Если min_val == max_val (например, вся матрица из нулей),
-    // то min_row/col == max_row/col, и обмен не требуется.
 }
 
-// Опциональная функция для вывода (полезно для тестирования)
-void print_matrix(int** matrix, int rows, int cols) {
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            std::cout << matrix[i][j] << "\t";
-        }
-        std::cout << std::endl;
-    }
-}
+// --------------------------------------------------
 
 /**
- * Реализация функции генерации случайных чисел
+ * @brief Выводит матрицу в консоль.
+ * * @param matrix Матрица для вывода.
  */
-void fill_matrix_randomly(int** matrix, int rows, int cols, int min_val, int max_val) {
-    if (rows <= 0 || cols <= 0) {
+void print_matrix_vector(const Matrix& matrix) {
+    if (matrix.empty()) return;
+
+    for (const auto& row : matrix) {
+        for (int val : row) {
+            std::cout << val << "\t";
+        }
+        std::cout << "\n";
+    }
+}
+
+// --------------------------------------------------
+
+/**
+ * @brief Заполняет матрицу случайными числами.
+ * * @param matrix Матрица для заполнения. Передается по ссылке для изменения.
+ * @param min_val Минимальное случайное значение (включительно).
+ * @param max_val Максимальное случайное значение (включительно).
+ */
+void fill_matrix_randomly_vector(Matrix& matrix, int min_val, int max_val) {
+    if (matrix.empty() || matrix[0].empty()) {
         return;
     }
 
-    // 1. Инициализация генератора случайных чисел
-    // Используем текущее время для инициализации (получаем "seed" для рандома)
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
     std::default_random_engine generator(seed);
 
-    // 2. Определение равномерного распределения в заданном диапазоне
     std::uniform_int_distribution<int> distribution(min_val, max_val);
 
-    // 3. Заполнение матрицы
-    for (int i = 0; i < rows; ++i) {
-        for (int j = 0; j < cols; ++j) {
-            matrix[i][j] = distribution(generator);
+    for (auto& row : matrix) {
+        for (int& val : row) {
+            val = distribution(generator);
         }
     }
 }
+
+// --------------------------------------------------
+
