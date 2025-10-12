@@ -8,8 +8,9 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 # Неделя 1
-add_subdirectory(2025/9/week-1)
+find_package(Matplot++ REQUIRED)
 add_executable(week-1-hw 2025/9/week-1/task1.cpp)
+target_link_libraries(week-1-hw PUBLIC Matplot++::matplot)
 
 # Неделя 5
 add_executable(2025-10-3-hw 2025/10/3/hw.cpp)
