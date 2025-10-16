@@ -24,3 +24,6 @@ add_executable(sro2 sro/sro2_rk1.cpp)
 add_subdirectory(2025/10/10)
 add_executable(2025-10-10-hw 2025/10/10/hw.cpp)
 target_link_libraries(2025-10-10-hw PRIVATE Glazunova_5_2_basic_lib Glazunova_5_2_middle_lib)
+
+# Неделя 7
+add_executable(2025-10-17-hw 2025/10/17/hw.cpp)
