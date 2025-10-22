@@ -16,7 +16,7 @@ using namespace std;
  */
 void glazunova_6_3_basic()
 {
-    forward_list list = {-5.2, 10.5, 0.0, 3.14, 9.9, -1.0, 7.77};
+    forward_list list = {-5.2, -10.5, 1.0, 3.14, 9.9, -1.0, 7.77};
 
     cout << "Исходный список:" << endl;
     for (const auto& item : list)
