@@ -157,8 +157,130 @@ void glazunova_6_3_middle()
  * входить в первый циклический список, а элемент с адресом PB — во второй).
  * Операции выделения и освобождения памяти не использовать.
  */
+
+struct Node
+{
+    int data;
+    Node* prev;
+    Node* next;
+
+};
+/**
+ * @brief Преобразует двусвязный список в два циклических и находит два средних элемента.
+ * * @param P1 Указатель на первый элемент исходного списка.
+ * @param P2 Указатель на последний элемент исходного списка.
+ * @param PA Выходной указатель на средний элемент, входящий в первый циклический список.
+ * @param PB Выходной указатель на средний элемент, входящий во второй циклический список.
+ */
+void transform_list(Node* P1, Node* P2, Node*& PA, Node*& PB)
+{
+    if (!P1 || !P2)
+    {
+        PA = nullptr;
+        PB = nullptr;
+        return;
+    }
+
+    Node* slow = P1;
+    Node* fast = P1;
+
+    while (fast != nullptr && fast->next != nullptr)
+    {
+        if (fast->next == P2)
+        {
+            PA = slow;
+            PB = slow->next;
+            break;
+        }
+
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    if (PA && PB)
+    {
+        Node* P1_End = PA;
+        Node* P1_Start = P1;
+
+        PA->next->prev = nullptr;
+        PA->next = nullptr;
+
+        // Превращаем первую половину в циклический список
+        P1_Start->prev = P1_End;
+        P1_End->next = P1_Start;
+
+        Node* P2_End = P2;
+        Node* P2_Start = PB;
+
+        // Превращаем вторую половину в циклический список
+        P2_Start->prev = P2_End;
+        P2_End->next = P2_Start;
+    }
+}
+
+// Функция для печати циклического списка (для проверки)
+void print_cyclic_list(Node* start_node, const std::string& name)
+{
+    if (!start_node) return;
+    std::cout << "Циклический список " << name << ": ";
+    Node* current = start_node;
+    int count = 0;
+    do
+    {
+        std::cout << current->data << " -> ";
+        current = current->next;
+        count++;
+        // Предотвращение бесконечного цикла, если список очень большой или не циклический
+        if (count > 20) break;
+    } while (current != start_node);
+    std::cout << "(цикл к " << start_node->data << ")\n";
+}
+
 void glazunova_6_3_high()
 {
+    Node nodes[] = {
+        {10, nullptr, nullptr},
+        {20, nullptr, nullptr},
+        {30, nullptr, nullptr},
+        {40, nullptr, nullptr},
+        {50, nullptr, nullptr},
+        {60, nullptr, nullptr}
+    };
+
+    int size = sizeof(nodes) / sizeof(Node);
+    for (int i = 0; i < size; ++i)
+    {
+        nodes[i].prev = (i > 0) ? &nodes[i - 1] : nullptr;
+        nodes[i].next = (i < size - 1) ? &nodes[i + 1] : nullptr;
+    }
+
+    Node* P1 = &nodes[0];
+    Node* P2 = &nodes[size - 1];
+
+    std::cout << "Исходный список: 10 <-> 20 <-> 30 <-> 40 <-> 50 <-> 60\n";
+
+    Node* PA = nullptr;
+    Node* PB = nullptr;
+
+    transform_list(P1, P2, PA, PB);
+
+    std::cout << "\n--- Результаты ---\n";
+
+    if (PA && PB)
+    {
+        std::cout << "Указатель PA (конец первой половины): " << PA->data << "\n";
+        std::cout << "Указатель PB (начало второй половины): " << PB->data << "\n";
+
+        // Проверка первого циклического списка (начинается с P1)
+        print_cyclic_list(P1, "Первый (PA)");
+
+        // Проверка второго циклического списка (начинается с PB)
+        print_cyclic_list(PB, "Второй (PB)");
+    }
+    else
+    {
+        std::cout << "Ошибка: Список пуст или преобразование не удалось.\n";
+    }
 }
 
 void waitForContinue()
