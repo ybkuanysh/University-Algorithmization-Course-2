@@ -29,3 +29,9 @@ target_link_libraries(2025-10-10-hw PRIVATE Glazunova_5_2_basic_lib Glazunova_5_
 
 # Неделя 7
 add_executable(2025-10-17-hw 2025/10/17/hw.cpp)
+
+# Неделя 8
+add_executable(2025-10-24-cw 2025/10/24/cw.cpp)
+
+# Неделя 9
+add_executable(2025-10-31-cw 2025/10/31/hw.cpp)
