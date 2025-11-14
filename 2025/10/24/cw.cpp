@@ -20,9 +20,13 @@ class Cat: public Animal
         this->color = color;
     }
     Cat() {}
-    void greeting() const
+
+    static void basicGreeting()
     {
-        std::cout << "meow, my name is " + name + "\n";
+        std::cout << "meow\n";
+    }
+    void describe() const {
+        std::cout << "meow, my name is " + name + " and my color is " + color + "\n";
     }
 };
 
@@ -32,5 +36,6 @@ int main()
 
     murzik.name = "Murzik";
     murzik.color = "grey";
-    murzik.greeting();
+    murzik.basicGreeting();
+    murzik.describe();
 }
