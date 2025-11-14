@@ -59,6 +59,14 @@ public:
         chrono::year_month_day today = floor<chrono::days>(chrono::system_clock::now());
         return (int) today.year() - (int) date_publish_.year();
     }
+
+    void print_description() const
+    {
+        cout << "Данные о данном объекте класса Book:" << endl
+        << "Название: " << name_ << endl
+        << "Автор: " << author_ << endl
+        << "Прошло лет с публикации: " << get_years_left() << endl;
+    }
 };
 
 /**
@@ -129,6 +137,7 @@ int main()
     Book book1 = Book("Book 1", "Author 1", 2023y, November, 10d);
     book1.print_years_left_from_publish();
     book1.print_days_left_from_publish();
+    book1.print_description();
 
     cout << "11.2 БАЗОВЫЙ УРОВЕНЬ:" << endl;
     Child child1 = Child(2, 3, 11);
