@@ -35,6 +35,10 @@ public:
             throw invalid_argument("Некорректная дата рождения");
         }
     }
+    ~Book()
+    {
+        cout << "Вызван деструктор для объекта класса Book с названием: " << name_ << endl;
+    }
 
     void print_years_left_from_publish() const
     {
