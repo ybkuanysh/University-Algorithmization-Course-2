@@ -20,6 +20,7 @@ add_executable(sro1 sro/sro.cpp)
 add_executable(sro2 sro/sro2_rk1.cpp)
 add_executable(sro3 sro/sro3.cpp)
 add_executable(sro4 sro/sro4.cpp)
+add_executable(sro5 sro/sro5.cpp)
 
 # Неделя 6
 add_subdirectory(2025/10/10)
@@ -41,3 +42,7 @@ add_executable(2025-11-7-cw 2025/11/7/hw.cpp)
 
 # Неделя 11
 add_executable(2025-11-14-hw 2025/11/14/hw.cpp)
+add_executable(2025-11-14-cw 2025/11/14/cw.cpp)
+
+# Неделя 12
+add_executable(2025-11-21-hw 2025/11/21/hw.cpp)
