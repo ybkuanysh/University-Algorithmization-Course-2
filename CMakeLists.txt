@@ -22,6 +22,7 @@ add_executable(sro2 sro/sro2_rk1.cpp)
 add_executable(sro3 sro/sro3.cpp)
 add_executable(sro4 sro/sro4.cpp)
 add_executable(sro5 sro/sro5.cpp)
+add_executable(rk2 sro/rk2.cpp)
 
 # Неделя 6
 add_subdirectory(2025/10/10)

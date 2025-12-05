@@ -166,11 +166,21 @@ vector<Matrix> readMatricesFromFile(const string& filename)
 int main()
 {
 
-    const auto l_matrices = readMatricesFromFile(LMatricesFileName);
-    const auto k_matrices = readMatricesFromFile(KMatricesFileName);
-    const vector<Matrix> extra_matrices = l_matrices.size() > k_matrices.size()
-    ? vector(l_matrices.begin() + k_matrices.size(), l_matrices.end())
-    : vector(k_matrices.begin() + l_matrices.size(), k_matrices.end());
+    auto l_matrices = readMatricesFromFile(LMatricesFileName);
+    auto k_matrices = readMatricesFromFile(KMatricesFileName);
+    vector<Matrix> extra_matrices {0};
+    if (l_matrices.size() > k_matrices.size())
+    {
+        extra_matrices = vector(l_matrices.begin() + k_matrices.size(), l_matrices.end());
+        l_matrices = vector(l_matrices.begin(), l_matrices.end() - extra_matrices.size());
+        writeMatricesToFile(l_matrices, LMatricesFileName);
+    }
+    else
+    {
+        extra_matrices = vector(k_matrices.begin() + l_matrices.size(), k_matrices.end());
+        k_matrices = vector(k_matrices.begin(), k_matrices.end() - extra_matrices.size());
+        writeMatricesToFile(k_matrices, KMatricesFileName);
+    }
     writeMatricesToFile(extra_matrices, ExtraMatricesFileName);
 
     cout << "Содержимое файла с L матрицами" << endl;
