@@ -10,6 +10,7 @@
       <file path="$PROJECT_DIR$/sro" />
     </sourceRoots>
     <excludeRoots>
+      <file path="$PROJECT_DIR$/build" />
       <file path="$PROJECT_DIR$/gcm.cache" />
     </excludeRoots>
   </component>

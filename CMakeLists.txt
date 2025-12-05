@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 4.0.2)
 
+#set(CMAKE_CXX_COMPILER /Library/Developer/CommandLineTools/usr/bin)
 project(Course-2 VERSION 1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
@@ -46,3 +47,10 @@ add_executable(2025-11-14-cw 2025/11/14/cw.cpp)
 
 # Неделя 12
 add_executable(2025-11-21-hw 2025/11/21/hw.cpp)
+
+# Неделя 13
+add_executable(2025-11-28-cw 2025/11/28/cw.cpp)
+add_executable(2025-11-28-hw 2025/11/28/hw.cpp)
+
+# Неделя 14
+add_executable(2025-12-5-hw 2025/12/5/hw.cpp)
