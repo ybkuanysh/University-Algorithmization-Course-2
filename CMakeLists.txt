@@ -55,3 +55,6 @@ add_executable(2025-11-28-hw 2025/11/28/hw.cpp)
 
 # Неделя 14
 add_executable(2025-12-5-hw 2025/12/5/hw.cpp)
+
+# Неделя 15
+add_executable(2025-12-12-hw 2025/12/12/hw.cpp)
